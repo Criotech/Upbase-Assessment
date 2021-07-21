@@ -10,7 +10,7 @@ let authToken = "pretoken";
 
 describe("server checks", function () {
     it("server instantiated without error", function (done) {
-        request("http://localhost:3000").get("/").expect(200, done);
+        request("https://upbaseassessment.herokuapp.com").get("/").expect(200, done);
     });
 });
 
@@ -23,7 +23,7 @@ describe("create user account", function () {
         email: "opesiyanbola8991@gmail.com"
     };
     it('/Post - create a new user accont', async () => {
-        const response = await request("http://localhost:3000")
+        const response = await request("https://upbaseassessment.herokuapp.com")
             .post("/api/users")
             .send(newUser)
             .expect(200);
@@ -33,7 +33,7 @@ describe("create user account", function () {
 
 describe('login existing user route', function () {
     it('/Post - Should login existing user', async function () {
-        const response = await request("http://localhost:3000").post('/api/auth').send({
+        const response = await request("https://upbaseassessment.herokuapp.com").post('/api/auth').send({
             email: "opesiyanbola8991@gmail.com",
             password: "Opeoluwa."
         }).expect(200)
@@ -41,7 +41,7 @@ describe('login existing user route', function () {
     })
 
     it('/Post - Should not login existing user', function (done) {
-        const response = request("http://localhost:3000").post('/api/auth').send({
+        const response = request("https://upbaseassessment.herokuapp.com").post('/api/auth').send({
             email: "opesiyanbola8991@gmail.com",
             password: 'thisisnotmypass'
         }).expect(400, done)
@@ -51,7 +51,7 @@ describe('login existing user route', function () {
 
 describe('Get user profile', function () {
     it('/Get - Should fetch login user profile', function (done) {
-        request("http://localhost:3000")
+        request("https://upbaseassessment.herokuapp.com")
             .get('/api/user')
             .set('Authorization', `Bearer ${authToken}`)
             .send()
@@ -59,7 +59,7 @@ describe('Get user profile', function () {
     })
 
     it('/Get - Should not get profile for unauthenticated user', function (done) {
-        request("http://localhost:3000")
+        request("https://upbaseassessment.herokuapp.com")
             .get('/api/user')
             .send()
             .expect(401, done)
@@ -69,7 +69,7 @@ describe('Get user profile', function () {
 
 describe('Update user profile picture', () => {
     it('/Put Should upload user image', async function () {
-        await request("http://localhost:3000")
+        await request("https://upbaseassessment.herokuapp.com")
             .put('/api/user')
             .set('Authorization', `Bearer ${authToken}`)
             .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -80,7 +80,7 @@ describe('Update user profile picture', () => {
 
 describe('Update user profile', () => {
     it('/Put Should upload user image', function (done) {
-        request("http://localhost:3000")
+        request("https://upbaseassessment.herokuapp.com")
             .put('/api/user')
             .set('Authorization', `Bearer ${authToken}`)
             .attach('profilePicture', './src/test/ace.jpg')
@@ -89,7 +89,7 @@ describe('Update user profile', () => {
 
 
     it('/Put - Should update login user profile', async function () {
-        let response = await request("http://localhost:3000")
+        let response = await request("https://upbaseassessment.herokuapp.com")
             .put('/api/user')
             .set('Authorization', `Bearer ${authToken}`)
             .send({
@@ -102,7 +102,7 @@ describe('Update user profile', () => {
     })
 
     it('/Put - Should not allow unwanted field for update', async function () {
-        let response = await request("http://localhost:3000")
+        let response = await request("https://upbaseassessment.herokuapp.com")
             .put('/api/user')
             .set('Authorization', `Bearer ${authToken}`)
             .send({
@@ -115,7 +115,7 @@ describe('Update user profile', () => {
 
 describe('Delete user account', () => {
     it('/Delete Should delete user account', function (done) {
-        request("http://localhost:3000")
+        request("https://upbaseassessment.herokuapp.com")
             .delete('/api/user')
             .set('Authorization', `Bearer ${authToken}`)
             .expect(200, done)
