@@ -40,6 +40,9 @@ Run api server with nodemon:
 ```bash
 nodemon ./dist/app.js
 ```
+## API Base URL:
+
+Api base url (https://upbaseassessment.herokuapp.com/)
 
 ## API Documentation:
 
