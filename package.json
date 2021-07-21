@@ -2,13 +2,12 @@
   "name": "upbasetest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "mocha -timeout 15000 -r dotenv/config -r esm \"src/test/**/*.test.ts\"",
     "start": "node ./dist/app.js",
     "dev": "nodemon ./dist/app.js"
   },
-  "author": "",
+  "author": "Siyanbola Opeoluwa",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
